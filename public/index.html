@@ -2,38 +2,48 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Gestion des étudiants</title>
+    <title>Gestion des critiques</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div class="container">
+         <h1 >Gestion des critiques</h1>
+          <p>Ajout et affichage dans un tableau</p>
         <div class="topbar">
             <div>
-                <h1>Gestion des utilisateurs</h1>
-                <p class="small">Ajout et affichage dans un tableau</p>
-            </div>
-            <div class="actions">
-                <a class="btn-link" href="/liste.html">Voir la liste complète</a>
-                <button class="secondary" onclick="logout()">Déconnexion</button>
+                <div class="actions">
+                    <div>
+                        <a class="btn-link" href="/liste.html">Voir la liste complète</a>
+                    </div>
+                    <br>
+                    <br>
+                    <div>
+                        <button class="secondary" onclick="logout()">Déconnexion</button>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div id="message"></div>
+       <!-- <div id="message"></div> -->
 
-        <h2>Ajouter un utilisateur</h2>
+        <h2>Ajouter une critique</h2>
         <form id="formAjout">
             <input type="text" id="nom" placeholder="Nom" required>
             <input type="text" id="programme" placeholder="Programme" required>
             <button type="submit">Ajouter</button>
         </form>
 
-        <h2>Ensemble des utilisateurs</h2>
-        <table>
+        <h2>Ensemble des critiques</h2>
+        <table class="EnsembleCritiques">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Prenom</th>
-                    <th>Nom</th>
+                    <th>ID de la critique</th>
+                    <th>Date</th>
+                    <th>ID de l'utilisateur</th>
+                    <th>ID du jeu</th>
+                    <th>Message</th>
+                    <th>Note</th>
+
                     <th>Actions</th>
                 </tr>
             </thead>
