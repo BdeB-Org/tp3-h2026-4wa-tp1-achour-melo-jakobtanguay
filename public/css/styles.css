@@ -54,4 +54,31 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
-}   
+}
+/*Page de connexion (Léane)*/
+.fondEcran{
+    background-color: #90badd;
+}
+#formulaireConnexion{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.conteneur{
+    margin-top: 4rem;
+}
+#boutonConnecter{
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: none;
+}
+#nomUtilisateur{
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: none;
+}
+#motDePasse{
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: none;
+}

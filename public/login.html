@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-    <h1>Page de connexion</h1>
-
-    <div id="message"></div>
-
-    <form id="formulaireConnexion">
-        <input type="text" id="nomUtilisateur" placeholder="Nom d'utilisateur" required>
-        <input type="password" id="motDePasse" placeholder="Mot de passe" required>
-        <button type="submit" id="boutonConnecter">Connexion</button>
-    </form>
-
+<body class="fondEcran">
     
+    <div class="conteneur">
+        <h1>Page de connexion</h1>
+
+        <div id="message"></div>
+
+        <form id="formulaireConnexion">
+            <input type="text" id="nomUtilisateur" placeholder="Nom d'utilisateur" required>
+            <input type="password" id="motDePasse" placeholder="Mot de passe" required>
+            <button type="submit" id="boutonConnecter">Connexion</button>
+        </form>
+    </div>
+
     <script src=""></script>
     <script>
         const form = document.getElementById('formulaireConnexion');
