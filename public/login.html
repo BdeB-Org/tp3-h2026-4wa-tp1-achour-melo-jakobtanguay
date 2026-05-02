@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Page de connexion</h1>
+
+    <div id="message"></div>
+
+    <form id="formulaireConnexion">
+        <input type="text" id="nomUtilisateur" placeholder="Nom d'utilisateur">
+        <input type="password" id="motDePasse" placeholder="Mot de passe">
+        <button type="submit" id="boutonConnecter">Connexion</button>
+    </form>
+    <script src=""></script>
+    <script>
+        const form = document.getElementById('formulaireConnexion');
+        const message = document.getElementById('message');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            message.innerHTML = '';
+
+            const username = document.getElementById('nomUtilisateur').value.trim();
+            const password = document.getElementById('motDePasse').value.trim();
+
+            try {
+                const res = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await res.json();
+
+                if (!res.ok) {
+                    throw new Error(data.message || 'Erreur de connexion');
+                }
+
+                saveToken(data.token);
+                window.location.href = '/index.html';
+            } catch (err) {
+                message.innerHTML = '<div class="message error">' + err.message + '</div>';
+            }
+        });
+    </script>
+</body>
+</html>

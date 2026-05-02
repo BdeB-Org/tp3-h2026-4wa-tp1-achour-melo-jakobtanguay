@@ -52,3 +52,19 @@ exports.deleteUtilisateur = (req, res) => {
         res.json({ message: "Utilisateur supprimé", id: id });
     });
 };
+
+//partie autorisation
+exports.getAll = (req, res) => {
+db.all("SELECT id, nom, programme FROM etudiants", (err, rows) => { if
+(err) {
+return res.status(500).json({ message: "Erreur serveur"}); }
+res.json(rows);});};
+exports.create = (req, res) => { const { nom, programme, password } = req.body;
+if (!nom || !programme || !password) {
+return res.status(400).json({
+message: "Tous les champs sont requis" });}
+db.run( "INSERT INTO etudiants(nom, programme, password) VALUES(?,?,?)", [nom, programme, password],
+function(err) { if (err) {
+return res.status(500).json({ message: "Erreur insertion" }); }
+res.json({ message: "Étudiant ajouté",
+id: this.lastID }); });};

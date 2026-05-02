@@ -3,13 +3,16 @@ const router = express.Router();
 
 const utilisateursController = require("../controllers/utilisateursController.js");
 
+const verifyToken = require('../middleware/authMiddleware');
+
+
 // Set up du CRUD
-router.get("/utilisateurs", utilisateursController.getUtilisateur);
+router.get("/utilisateurs", verifyToken, utilisateursController.getUtilisateur);
 
-router.post("/utilisateurs", utilisateursController.addUtilisateur);
+router.post("/utilisateurs", verifyToken,utilisateursController.addUtilisateur);
 
-router.put("/utilisateurs/:utilisateur_id", utilisateursController.updateUtilisateur);
+router.put("/utilisateurs/:utilisateur_id", verifyToken, utilisateursController.updateUtilisateur);
 
-router.delete("/utilisateurs/:utilisateur_id", utilisateursController.deleteUtilisateur);
+router.delete("/utilisateurs/:utilisateur_id", verifyToken, utilisateursController.deleteUtilisateur);
 
 module.exports = router;
