@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Accueil - Base de données</h1>
+
+    <button type="submit" id="boutonCritiques">Critiques</button>
+    <button type="submit" id="boutonUtilisateurs">Utilisateurs</button>
+    <button type="submit" id="boutonJeux">Jeux vidéo</button>
+    <button type="submit" id="boutonPublications">Publications</button>
+
+    <script src="js/auth.js"></script>
+    <script>
+        const boutonCritique = document.getElementById('boutonCritiques');
+        const boutonUtilisateurs = document.getElementById('boutonUtilisateurs');
+        const boutonJeux = document.getElementById('boutonJeux');
+        const boutonPublications = document.getElementById('boutonPublications');
+
+        boutonCritique.addEventListener('click', () => {
+            window.location.href = '/critiques.html';
+        });
+
+        boutonUtilisateurs.addEventListener('click', () => {
+            window.location.href = '/utilisateurs.html';
+        });
+
+        boutonJeux.addEventListener('click', () => {
+            window.location.href = '/jeux.html';
+        });
+
+        boutonPublications.addEventListener('click', () => {
+            window.location.href = '/publications.html';
+        });
+    </script>
+</body>
+</html>
