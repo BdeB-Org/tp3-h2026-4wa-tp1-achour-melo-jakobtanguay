@@ -32,22 +32,22 @@ const db = require('../config/database');
 const jwt = require('jsonwebtoken');
 
 exports.login = (req, res) => {
-    const { username, password } = req.body;
+    const { nom, motDePasse } = req.body;
 
     db.get(
-        "SELECT * FROM users WHERE username = ? AND password = ?",
-        [username, password],
-        (err, user) => {
+        "SELECT * FROM Utilisateurs WHERE nom = ? AND motDePasse = ?",
+        [nom, motDePasse],
+        (err, Utilisateurs) => {
             if (err) {
                 return res.status(500).json({ message: err.message });
             }
 
-            if (!user) {
+            if (!Utilisateurs) {
                 return res.status(401).json({ message: 'Nom d\'utilisateur ou mot de passe invalide' });
             }
 
             const token = jwt.sign(
-                { id: user.id, username: user.username },
+                { id: Utilisateurs.id, username: Utilisateurs.nom },
                 'secretkey',
                 { expiresIn: '2h' }
             );
@@ -55,7 +55,7 @@ exports.login = (req, res) => {
             res.json({
                 message: 'Connexion réussie',
                 token,
-                username: user.username
+                username: Utilisateurs.nom
             });
         }
     );

@@ -8,13 +8,13 @@ require('./config/database');
 app.use(express.json());
 app.use(express.static('public'));
 
-const jeuxvideosRoutes = require('./routes/jeuxvideosRoutes');
+const jeuxvideoRoutes = require('./routes/jeuxvideoRoutes');
 const critiquesRoutes = require('./routes/CritiquesRoutes');
 const authRoutes = require('./routes/authRoutes');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/critiques', critiquesRoutes);
-app.use('/api/jeuxvideos', jeuxvideosRoutes);
+app.use('/api/jeuxvideos', jeuxvideoRoutes);
 
 // Redirection par défaut
 app.get('/', (req, res) => {

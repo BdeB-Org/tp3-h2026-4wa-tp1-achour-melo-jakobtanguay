@@ -44,15 +44,15 @@ db.serialize(() => {
     `);
 
     db.run(`
-        CREATE TABLE IF NOT EXISTS users (
+        CREATE TABLE IF NOT EXISTS Utilisateurs (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            username TEXT UNIQUE,
-            password TEXT
+            nom TEXT UNIQUE,
+            motDePasse TEXT
         )
     `);
 
     db.run(
-        "INSERT OR IGNORE INTO users (username, password) VALUES (?, ?)",
+        "INSERT OR IGNORE INTO Utilisateurs (nom, motDePasse) VALUES (?, ?)",
         ['admin', 'admin123']
     );
 });
