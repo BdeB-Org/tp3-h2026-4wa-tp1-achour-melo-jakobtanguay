@@ -1,6 +1,6 @@
 requireAuth();
 
-const tbody = document.getElementById('tbodyListe');
+const tbody = document.getElementById('tbodyListeCritiques');
 const message = document.getElementById('message');
 
 function showMessage(text, isError = false) {
@@ -16,22 +16,25 @@ function escapeHtml(value) {
         .replaceAll("'", '&#039;');
 }
 
-async function chargerUtilisateurs() {
+async function chargerCritiques() {
     try {
-        const res = await apiFetch('/api/etudiants');
+        const res = await apiFetch('/api/critiques');
         const data = await res.json();
 
         tbody.innerHTML = '';
 
-        data.forEach(utilisateur => {
+        data.forEach(critique => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${utilisateur.id}</td>
-                <td>${escapeHtml(utilisateur.prenom)}</td>
-                <td>${escapeHtml(utilisateur.nom)}</td>
+                <td>${critique.id}</td>
+                <td>${escapeHtml(critique.date)}</td>
+                <td>${escapeHtml(critique.utilisateur_id)}</td>
+                <td>${escapeHtml(critique.jeu_id)}</td>
+                <td>${escapeHtml(critique.message)}</td>
+                <td>${escapeHtml(critique.note)}</td>
                 <td>
-                    <a class="btn-link" href="/edit.html?id=${utilisateur.id}">Modifier</a>
-                    <button class="danger" onclick="supprimerUtilisateur(${utilisateur.id})">Supprimer</button>
+                    <a class="btn-link" href="/edit.html?id=${critique.id}">Modifier</a>
+                    <button class="danger" onclick="supprimerCritique(${critique.id})">Supprimer</button>
                 </td>
             `;
             tbody.appendChild(tr);
@@ -41,11 +44,11 @@ async function chargerUtilisateurs() {
     }
 }
 
-async function supprimerUtilisateur(id) {
-    if (!confirm('Voulez-vous vraiment supprimer cet utilisateur ?')) return;
+async function supprimerCritique(id) {
+    if (!confirm('Voulez-vous vraiment supprimer cette critique ?')) return;
 
     try {
-        const res = await apiFetch('/api/etudiants/' + id, { method: 'DELETE' });
+        const res = await apiFetch('/api/critiques/' + id, { method: 'DELETE' });
         const data = await res.json();
 
         if (!res.ok) {
@@ -53,10 +56,10 @@ async function supprimerUtilisateur(id) {
         }
 
         showMessage(data.message);
-        chargerUtilisateurs();
+        chargerCritiques();
     } catch (err) {
         showMessage(err.message, true);
     }
 }
 
-chargerUtilisateurs();
+chargerCritiques();

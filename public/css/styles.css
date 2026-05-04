@@ -1,14 +1,15 @@
 
-/* Style de la page d'accueil (Fait par Isabelle J-T) */
+///////////////////////////////////////////////////////////////
+/* Style de la page critiques.html (Fait par Isabelle J-T) */
 
 /* Style de base de la page*/
-body {
+.container {
     display: flex;
     flex-direction:column;
     justify-content: center;
     align-items: center;
     font-family: Arial, sans-serif;
-    background-color: #90badd;
+    
     margin: 0;
     padding: 0;
 }
@@ -22,8 +23,8 @@ body {
     width: 100%;
     max-width: 1200px;
     padding: 0px;
-    
-    background-color: #fff;
+
+    border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -35,6 +36,7 @@ body {
     justify-content:space-between;
     padding: 10px;
     gap:40px;
+    
 }
 
 /*Style du formulaire d'ajout de critique*/
@@ -53,8 +55,26 @@ body {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: black solid 1px;
     margin-top: 20px;
 }
+//////////////////////////////////////////////////////////////
+
+/*Style de la page listeCritiques.html (Fait par Isabelle J-T)*/
+
+
+/*Style de la section de la table*/
+.EnsembleListeCritiques {
+    width: 100%;
+
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: black solid 1px;
+    margin-top: 20px;
+}
+
+////////////////////////////////////////////////////////////////////////
 /*Page de connexion (Léane)*/
 .fondEcran{
     background-color: #90badd;

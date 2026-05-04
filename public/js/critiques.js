@@ -1,7 +1,8 @@
+//Page faite par Isabelle JT//
 requireAuth();
 
 const form = document.getElementById('formAjout');
-const tbody = document.getElementById('tbodyUtilisateurs');
+const tbody = document.getElementById('tbodyCritiques');
 const message = document.getElementById('message');
 
 function showMessage(text, isError = false) {
@@ -17,22 +18,24 @@ function escapeHtml(value) {
         .replaceAll("'", '&#039;');
 }
 
-async function chargerUtilisateurs() {
+async function chargerCritiques() {
     try {
-        const res = await apiFetch('/api/utilisateurs');
+        const res = await apiFetch('/api/critiques');
         const data = await res.json();
 
         tbody.innerHTML = '';
 
-        data.forEach(utilisateur => {
+        data.forEach(critique => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${utilisateur.id}</td>
-                <td>${escapeHtml(utilisateur.nom)}</td>
-                <td>${escapeHtml(utilisateur.programme)}</td>
+                <td>${escapeHtml(critique.critique_id || critique.id || '')}</td>
+                <td>${escapeHtml(critique.date || '')}</td>
+                <td>${escapeHtml(critique.utilisateur_id || '')}</td>
+                <td>${escapeHtml(critique.jeu_id || '')}</td>
+                <td>${escapeHtml(critique.message || '')}</td>
+                <td>${escapeHtml(critique.note || '')}</td>
                 <td>
-                    <a class="btn-link" href="/edit.html?id=${utilisateur.id}">Modifier</a>
-                    <button class="danger" onclick="supprimerUtilisateur(${utilisateur.id})">Supprimer</button>
+                    <button class="danger" onclick="supprimerCritique('${critique.critique_id || critique.id || ''}')">Supprimer</button>
                 </td>
             `;
             tbody.appendChild(tr);
@@ -45,13 +48,14 @@ async function chargerUtilisateurs() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const nom = document.getElementById('nom').value.trim();
-    const programme = document.getElementById('motDePasse').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const note = document.getElementById('note').value.trim();
+    const jeuId = document.getElementById('jeu.id').value.trim();
 
     try {
-        const res = await apiFetch('/api/utilisateurs', {
+        const res = await apiFetch('/api/critiques', {
             method: 'POST',
-            body: JSON.stringify({ nom, programme })
+            body: JSON.stringify({ message, note, jeu_id: jeuId })
         });
 
         const data = await res.json();
@@ -61,18 +65,18 @@ form.addEventListener('submit', async (e) => {
         }
 
         form.reset();
-        showMessage('Utilisateur ajouté avec succès');
-        chargerUtilisateurs();
+        showMessage('Critique ajoutée avec succès');
+        chargerCritiques();
     } catch (err) {
         showMessage(err.message, true);
     }
 });
 
-async function supprimerUtilisateur(id) {
-    if (!confirm('Voulez-vous vraiment supprimer cet utilisateur ?')) return;
+async function supprimerCritique(id) {
+    if (!confirm('Voulez-vous vraiment supprimer cette critique ?')) return;
 
     try {
-        const res = await apiFetch('/api/utilisateurs/' + id, {
+        const res = await apiFetch('/api/critiques/' + id, {
             method: 'DELETE'
         });
 
@@ -83,10 +87,10 @@ async function supprimerUtilisateur(id) {
         }
 
         showMessage(data.message);
-        chargerUtilisateurs();
+        chargerCritiques();
     } catch (err) {
         showMessage(err.message, true);
     }
 }
 
-chargerUtilisateurs();
+chargerCritiques();

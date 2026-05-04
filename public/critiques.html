@@ -1,4 +1,4 @@
-<!--Patge faite par Isabelle JT-->
+<!--Page faite par Isabelle JT-->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -29,8 +29,9 @@
 
         <h2>Ajouter une critique</h2>
         <form id="formAjout">
-            <input type="text" id="nom" placeholder="Nom" required>
-            <input type="text" id="programme" placeholder="Programme" required>
+            <input type="text" id="message" placeholder="Message" required>
+            <input type="text" id="note" placeholder="Note" required>
+            <input type="text" id="jeu.id" placeholder="ID du jeu" required>
             <button type="submit">Ajouter</button>
         </form>
 
@@ -48,11 +49,11 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody id="tbodyUtilisateurs"></tbody>
+            <tbody id="tbodyCritiques"></tbody>
         </table>
     </div>
 
     <script src="js/auth.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/critiques.js"></script>
 </body>
 </html>
