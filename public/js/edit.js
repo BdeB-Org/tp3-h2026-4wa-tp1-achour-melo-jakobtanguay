@@ -9,9 +9,9 @@ function showMessage(text, isError = false) {
     message.innerHTML = `<div class="message ${isError ? 'error' : ''}">${text}</div>`;
 }
 
-async function chargerEtudiant() {
+async function chargerUtilisateur() {
     try {
-        const res = await apiFetch('/api/etudiants/' + id);
+        const res = await apiFetch('/api/utilisatuers/' + id);
         const data = await res.json();
 
         if (!res.ok) {
@@ -19,7 +19,8 @@ async function chargerEtudiant() {
         }
 
         document.getElementById('nom').value = data.nom;
-        document.getElementById('programme').value = data.programme;
+        document.getElementById('programme').value = data.prenom;
+        document.getElementById('programme').value = data.motDePasse;
     } catch (err) {
         showMessage(err.message, true);
     }
@@ -32,7 +33,7 @@ form.addEventListener('submit', async (e) => {
     const programme = document.getElementById('programme').value.trim();
 
     try {
-        const res = await apiFetch('/api/etudiants/' + id, {
+        const res = await apiFetch('/api/utilisateurs/' + id, {
             method: 'PUT',
             body: JSON.stringify({ nom, programme })
         });
@@ -53,7 +54,7 @@ form.addEventListener('submit', async (e) => {
 });
 
 if (!id) {
-    showMessage('ID étudiant manquant', true);
+    showMessage('ID utilisateur manquant', true);
 } else {
-    chargerEtudiant();
+    chargerUtilisateur();
 }
