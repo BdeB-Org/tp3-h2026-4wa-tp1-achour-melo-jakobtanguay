@@ -1,4 +1,5 @@
 
+/*Page fait par Isabelle JT*/
 const sqlite3 = require('sqlite3').verbose();
 
 const db = new sqlite3.Database('./fichier.db', (err) => {
