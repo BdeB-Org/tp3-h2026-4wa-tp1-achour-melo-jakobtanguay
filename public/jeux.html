@@ -25,30 +25,26 @@
             </div>
         </div>
 
-       <!-- <div id="message"></div> -->
+       <div id="message"></div>
 
-        <h2>Ajouter une critique</h2>
+        <h2>Ajouter un jeu vidéo</h2>
         <form id="formAjout">
-            <input type="text" id="nom" placeholder="Nom" required>
-            <input type="text" id="programme" placeholder="Programme" required>
+            <input type="text" id="ID" placeholder="ID du jeu" required>
+            <input type="text" id="nom" placeholder="Nom du jeu" required>
             <button type="submit">Ajouter</button>
         </form>
 
-        <h2>Ensemble des critiques</h2>
+        <h2>Tableau des jeux vidéo</h2>
         <table class="EnsembleCritiques">
             <thead>
                 <tr>
-                    <th>ID de la critique</th>
-                    <th>Date</th>
-                    <th>ID de l'utilisateur</th>
                     <th>ID du jeu</th>
-                    <th>Message</th>
-                    <th>Note</th>
+                    <th>Titre du jeu</th>
 
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody id="tbodyEtudiants"></tbody>
+            <tbody id="tbodyJeux"></tbody>
         </table>
     </div>
 

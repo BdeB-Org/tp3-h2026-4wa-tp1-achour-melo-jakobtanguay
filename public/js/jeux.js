@@ -1,7 +1,8 @@
+//Fait par Léane
 requireAuth();
 
 const form = document.getElementById('formAjout');
-const tbody = document.getElementById('tbodyUtilisateurs');
+const tbody = document.getElementById('tbodyJeux');
 const message = document.getElementById('message');
 
 function showMessage(text, isError = false) {
@@ -17,22 +18,21 @@ function escapeHtml(value) {
         .replaceAll("'", '&#039;');
 }
 
-async function chargerUtilisateurs() {
+async function chargerJeux() {
     try {
-        const res = await apiFetch('/api/utilisateurs');
+        const res = await apiFetch('/api/jeux');
         const data = await res.json();
 
         tbody.innerHTML = '';
 
-        data.forEach(utilisateur => {
+        data.forEach(jeu => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${utilisateur.id}</td>
-                <td>${escapeHtml(utilisateur.nom)}</td>
-                <td>${escapeHtml(utilisateur.programme)}</td>
+                <td>${jeu.id}</td>
+                <td>${escapeHtml(jeu.nom)}</td>
                 <td>
-                    <a class="btn-link" href="/edit.html?id=${utilisateur.id}">Modifier</a>
-                    <button class="danger" onclick="supprimerUtilisateur(${utilisateur.id})">Supprimer</button>
+                    <a class="btn-link" href="/edit.html?id=${jeu.id}">Modifier</a>
+                    <button class="danger" onclick="supprimerJeu(${jeu.id})">Supprimer</button>
                 </td>
             `;
             tbody.appendChild(tr);
@@ -42,16 +42,18 @@ async function chargerUtilisateurs() {
     }
 }
 
+// Référence au bouton Ajouter
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const nom = document.getElementById('nom').value.trim();
-    const programme = document.getElementById('motDePasse').value.trim();
+    const id = document.getElementById('ID').value.trim();
+    // const programme = document.getElementById('motDePasse').value.trim();
 
     try {
-        const res = await apiFetch('/api/utilisateurs', {
+        const res = await apiFetch('/api/jeux', {
             method: 'POST',
-            body: JSON.stringify({ nom, programme })
+            body: JSON.stringify({ nom, id /*programme*/ })
         });
 
         const data = await res.json();
@@ -61,18 +63,18 @@ form.addEventListener('submit', async (e) => {
         }
 
         form.reset();
-        showMessage('Utilisateur ajouté avec succès');
-        chargerUtilisateurs();
+        showMessage('Jeu ajouté avec succès');
+        chargerJeux();
     } catch (err) {
         showMessage(err.message, true);
     }
 });
 
-async function supprimerUtilisateur(id) {
-    if (!confirm('Voulez-vous vraiment supprimer cet utilisateur ?')) return;
+async function supprimerJeu(id) {
+    if (!confirm('Voulez-vous supprimer ce jeu ?')) return;
 
     try {
-        const res = await apiFetch('/api/utilisateurs/' + id, {
+        const res = await apiFetch('/api/jeux/' + id, {
             method: 'DELETE'
         });
 
@@ -83,10 +85,10 @@ async function supprimerUtilisateur(id) {
         }
 
         showMessage(data.message);
-        chargerUtilisateurs();
+        chargerJeux();
     } catch (err) {
         showMessage(err.message, true);
     }
 }
 
-chargerUtilisateurs();
+chargerJeux();
