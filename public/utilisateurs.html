@@ -1,0 +1,56 @@
+<!-- Fait par Léane -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des utilisateurs</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+         <h1 >Gestion des utilisateurs</h1>
+          <p>Ajout et affichage dans un tableau</p>
+        <div class="topbar">
+            <div>
+                <div class="actions">
+                    <div>
+                        <a class="btn-link" href="/listeUtilisateurs.html">Voir la liste complète</a>
+                    </div>
+                    <br>
+                    <br>
+                    <div>
+                        <button class="secondary" onclick="logout()">Déconnexion</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       <div id="message"></div>
+
+        <h2>Ajouter un utilisateur</h2>
+        <form id="formAjout">
+            <!-- <input type="text" id="utilisateur_id" placeholder="ID de l'utilisateur" required> -->
+            <input type="text" id="nom" placeholder="Nom de l'utilisateur" required>
+            <input type="text" id="prenom" placeholder="Prénom de l'utilisateur" required>
+            <input type="password" id="motDePasse" placeholder="Mot de passe" required>
+            <button type="submit">Ajouter</button>
+        </form>
+
+        <h2>Tableau des utilisateurs</h2>
+        <table class="EnsembleCritiques">
+            <thead>
+                <tr>
+                    <th>ID de l'utilisateur</th>
+                    <th>Nom de l'utilisateur</th>
+                    <th>Prenom de l'utilisateur</th>
+                    <th>motDePasse</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyUtilisateurs"></tbody>
+        </table>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/utilisateurs.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!-- Fait par Léane -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Utilisateurs</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="liste">
+        <div class="topbar">
+            <div>
+                <h1>Liste des utilisateurs</h1>
+                <p class="small">Modifier et supprimer des utilisateurs existants</p>
+            </div>
+            <div class="actions">
+                <a class="btn-link" href="/utilisateurs.html">Retour à l'ajout</a>
+                <button class="secondary" onclick="logout()">Déconnexion</button>
+            </div>
+        </div>
+
+        <div id="message"></div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID de l'utilisateur</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>motDePasse</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyListe"></tbody>
+        </table>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/listeUtilisateurs.js"></script>
+</body>
+</html>

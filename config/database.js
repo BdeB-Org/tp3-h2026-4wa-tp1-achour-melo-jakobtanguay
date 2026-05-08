@@ -25,7 +25,7 @@ db.serialize(() => {
             utilisateur_id TEXT,
             message TEXT,
             note TEXT,
-            jeu_id TEXT,
+            jeu_id TEXT
         )
     `);
 
