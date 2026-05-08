@@ -26,15 +26,14 @@ async function chargerCritiques() {
         data.forEach(critique => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${critique.id}</td>
-                <td>${escapeHtml(critique.date)}</td>
+                <td>${critique.critique_id}</td>
                 <td>${escapeHtml(critique.utilisateur_id)}</td>
                 <td>${escapeHtml(critique.jeu_id)}</td>
                 <td>${escapeHtml(critique.message)}</td>
                 <td>${escapeHtml(critique.note)}</td>
                 <td>
-                    <a class="btn-link" href="/edit.html?id=${critique.id}">Modifier</a>
-                    <button class="danger" onclick="supprimerCritique(${critique.id})">Supprimer</button>
+                    <a class="btn-link" href="/edit.html?id=${critique_id}">Modifier</a>
+                    <button class="danger" onclick="supprimerCritique(${critique_id})">Supprimer</button>
                 </td>
             `;
             tbody.appendChild(tr);

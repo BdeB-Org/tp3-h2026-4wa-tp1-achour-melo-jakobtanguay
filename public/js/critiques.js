@@ -29,13 +29,12 @@ async function chargerCritiques() {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>${escapeHtml(critique.critique_id || critique.id || '')}</td>
-                <td>${escapeHtml(critique.date || '')}</td>
                 <td>${escapeHtml(critique.utilisateur_id || '')}</td>
                 <td>${escapeHtml(critique.jeu_id || '')}</td>
                 <td>${escapeHtml(critique.message || '')}</td>
                 <td>${escapeHtml(critique.note || '')}</td>
                 <td>
-                    <button class="danger" onclick="supprimerCritique('${critique.critique_id || critique.id || ''}')">Supprimer</button>
+                    <button class="danger" onclick="supprimerCritique('${critique.critique_id || critique_id || ''}')">Supprimer</button>
                 </td>
             `;
             tbody.appendChild(tr);
