@@ -11,13 +11,13 @@ const db = new sqlite3.Database('./fichier.db', (err) => {
 });
 
 db.serialize(() => {
-    db.run(`
+    /*db.run(`
         CREATE TABLE IF NOT EXISTS Utilisateurs (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             nom TEXT,
             programme TEXT
         )
-    `);
+    `);*/
 
         db.run(`
         CREATE TABLE IF NOT EXISTS Critiques (
@@ -29,9 +29,8 @@ db.serialize(() => {
 
      db.run(`
         CREATE TABLE IF NOT EXISTS Jeux_videos (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nom TEXT,
-            programme TEXT
+            jeu_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            titre TEXT
         )
     `);
 

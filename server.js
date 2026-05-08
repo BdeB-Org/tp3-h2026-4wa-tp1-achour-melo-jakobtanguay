@@ -9,12 +9,12 @@ app.use(express.json());
 app.use(express.static('public'));
 
 const jeuxvideoRoutes = require('./routes/jeuxvideoRoutes');
-const critiquesRoutes = require('./routes/CritiquesRoutes');
+const critiquesRoutes = require('./routes/critiquesRoutes');
 const authRoutes = require('./routes/authRoutes');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/critiques', critiquesRoutes);
-app.use('/api/jeuxvideos', jeuxvideoRoutes);
+app.use('/api/jeuxvideo', jeuxvideoRoutes);
 
 // Redirection par défaut
 app.get('/', (req, res) => {

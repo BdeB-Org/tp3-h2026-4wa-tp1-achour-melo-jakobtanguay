@@ -19,7 +19,7 @@ function escapeHtml(value) {
 
 async function chargerJeux() {
     try {
-        const res = await apiFetch('/api/jeuxVideos');
+        const res = await apiFetch('/api/jeuxvideo');
         const data = await res.json();
 
         tbody.innerHTML = '';
@@ -28,7 +28,7 @@ async function chargerJeux() {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>${jeux.id}</td>
-                <td>${escapeHtml(jeux.titre)}</td>
+                <td>${escapeHtml(jeux.nom)}</td>
                 <td>
                     <a class="btn-link" href="/edit.html?id=${jeux.id}">Modifier</a>
                     <button class="danger" onclick="supprimerJeu(${jeux.id})">Supprimer</button>
@@ -45,7 +45,7 @@ async function supprimerJeu(id) {
     if (!confirm('Voulez-vous vraiment supprimer ce jeu ?')) return;
 
     try {
-        const res = await apiFetch('/api/jeuxVideos/' + id, { method: 'DELETE' });
+        const res = await apiFetch('/api/jeuxvideo/' + id, { method: 'DELETE' });
         const data = await res.json();
 
         if (!res.ok) {

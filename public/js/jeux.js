@@ -20,7 +20,7 @@ function escapeHtml(value) {
 
 async function chargerJeux() {
     try {
-        const res = await apiFetch('/api/jeux');
+        const res = await apiFetch('/api/jeuxvideo');
         const data = await res.json();
 
         tbody.innerHTML = '';
@@ -28,11 +28,11 @@ async function chargerJeux() {
         data.forEach(jeu => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${jeu.id}</td>
-                <td>${escapeHtml(jeu.nom)}</td>
+                <td>${jeu.jeu_id}</td>
+                <td>${escapeHtml(jeu.titre)}</td>
                 <td>
-                    <a class="btn-link" href="/edit.html?id=${jeu.id}">Modifier</a>
-                    <button class="danger" onclick="supprimerJeu(${jeu.id})">Supprimer</button>
+                    <a class="btn-link" href="/edit.html?id=${jeu.jeu_id}">Modifier</a>
+                    <button class="danger" onclick="supprimerJeu(${jeu.jeu_id})">Supprimer</button>
                 </td>
             `;
             tbody.appendChild(tr);
@@ -46,14 +46,15 @@ async function chargerJeux() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const nom = document.getElementById('nom').value.trim();
-    const id = document.getElementById('ID').value.trim();
-    // const programme = document.getElementById('motDePasse').value.trim();
+    console.log("Envoyé");
+
+    const titre = document.getElementById('titre').value.trim();
+    //const id = document.getElementById('jeu_id').value.trim();
 
     try {
-        const res = await apiFetch('/api/jeux', {
+        const res = await apiFetch('/api/jeuxvideo', {
             method: 'POST',
-            body: JSON.stringify({ nom, id /*programme*/ })
+            body: JSON.stringify({ titre, /*jeu_id: id */})
         });
 
         const data = await res.json();
@@ -74,7 +75,7 @@ async function supprimerJeu(id) {
     if (!confirm('Voulez-vous supprimer ce jeu ?')) return;
 
     try {
-        const res = await apiFetch('/api/jeux/' + id, {
+        const res = await apiFetch('/api/jeuxvideo/' + id, {
             method: 'DELETE'
         });
 
