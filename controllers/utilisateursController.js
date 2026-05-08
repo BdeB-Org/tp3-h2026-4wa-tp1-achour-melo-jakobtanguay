@@ -3,13 +3,15 @@
 const db = require('../config/database');
 
 //Partie Isabelle
-// GET
+
+//requête GET
 exports.getUtilisateur = (req,res)=>{
  db.all('SELECT * FROM utilisateurs',(err,rows)=>{
   res.json(rows);
  });
 };
 
+//requête POST
 exports.addUtilisateur = (req,res)=>{
     const nom = req.body.nom;
     const prenom = req.body.prenom;
@@ -24,6 +26,7 @@ exports.addUtilisateur = (req,res)=>{
         res.json({message:"Utilisateur ajouté",id:this.lastID});
     });};
 
+//Requête PUT
 exports.updateUtilisateur = (req, res) => {
     const id = req.params.utilisateur_id;
     const { nom, prenom, utilisateur_id } = req.body;
@@ -36,6 +39,7 @@ exports.updateUtilisateur = (req, res) => {
         });
 };
 
+//Requête DELETE
 exports.deleteUtilisateur = (req, res) => {
     const id = req.params.utilisateur_id;
     if (!id) {
