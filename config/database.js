@@ -1,5 +1,4 @@
-
-/*Page fait par Isabelle JT*/
+/*Page fait par tous les membres de l'équipe*/
 const sqlite3 = require('sqlite3').verbose();
 
 const db = new sqlite3.Database('./fichier.db', (err) => {

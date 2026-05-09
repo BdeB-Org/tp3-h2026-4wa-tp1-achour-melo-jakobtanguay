@@ -1,13 +1,28 @@
-
+// Fait par Axel
 //connexion à la base de données
 const db = require('../config/database');
-
-//Partie Isabelle
 
 //requête GET
 exports.getUtilisateur = (req,res)=>{
  db.all('SELECT * FROM utilisateurs',(err,rows)=>{
+  if(err){
+    return res.status(500).json({ erreur: err.message });
+  }
   res.json(rows);
+ });
+};
+
+//requête GET by ID
+exports.getUtilisateurById = (req,res)=>{
+ const id = req.params.utilisateur_id;
+ db.get('SELECT * FROM utilisateurs WHERE utilisateur_id = ?',[id],(err,row)=>{
+  if(err){
+   return res.status(500).json({erreur:err.message});
+  }
+  if(!row){
+   return res.status(404).json({message:"Utilisateur non trouvé"});
+  }
+  res.json(row);
  });
 };
 
@@ -30,7 +45,7 @@ exports.addUtilisateur = (req,res)=>{
 exports.updateUtilisateur = (req, res) => {
     const id = req.params.utilisateur_id;
     const { nom, prenom, motDePasse } = req.body;
-    db.run('UPDATE utilisateurs SET nom = ?, prenom = ?, motDePasse = ? WHERE id = ?', [nom, prenom, motDePasse, id],
+    db.run('UPDATE utilisateurs SET nom = ?, prenom = ?, motDePasse = ? WHERE utilisateur_id = ?', [nom, prenom, motDePasse, id],
         function(err) {
             if (err) {
                 return res.status(500).json({ erreur: err.message });
@@ -45,7 +60,7 @@ exports.deleteUtilisateur = (req, res) => {
     if (!id) {
         return res.status(400).json({ message: "ID manquant" });
     }
-    db.run('DELETE FROM utilisateurs WHERE id = ?', [id], function(err) {
+    db.run('DELETE FROM utilisateurs WHERE utilisateur_id = ?', [id], function(err) {
         if (err) {
             console.error(err);
             return res.status(500).json({ erreur: err.message });
@@ -57,18 +72,25 @@ exports.deleteUtilisateur = (req, res) => {
     });
 };
 
-//partie autorisation
+//Partie autorisation
 exports.getAll = (req, res) => {
-db.all("SELECT id, nom, programme FROM etudiants", (err, rows) => { if
-(err) {
-return res.status(500).json({ message: "Erreur serveur"}); }
-res.json(rows);});};
-exports.create = (req, res) => { const { nom, programme, password } = req.body;
-if (!nom || !programme || !password) {
-return res.status(400).json({
-message: "Tous les champs sont requis" });}
-db.run( "INSERT INTO etudiants(nom, programme, password) VALUES(?,?,?)", [nom, programme, password],
-function(err) { if (err) {
-return res.status(500).json({ message: "Erreur insertion" }); }
-res.json({ message: "Étudiant ajouté",
-id: this.lastID }); });};
+    db.all("SELECT id, nom, programme FROM etudiants", (err, rows) => { 
+    if (err) {
+        return res.status(500).json({ message: "Erreur serveur"}); 
+    }
+        res.json(rows);});
+    };
+
+    exports.create = (req, res) => { 
+        const { nom, programme, password } = req.body;
+        if (!nom || !programme || !password) {
+            return res.status(400).json({
+            message: "Tous les champs sont requis" });}
+            db.run( "INSERT INTO etudiants(nom, programme, password) VALUES(?,?,?)", [nom, programme, password],
+
+        function(err) { if (err) {
+            return res.status(500).json({ message: "Erreur insertion" }); }
+            res.json({ message: "Étudiant ajouté",
+            id: this.lastID }); 
+        });
+    };
