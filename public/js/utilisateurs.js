@@ -32,6 +32,10 @@ async function chargerUtilisateurs() {
                 <td>${escapeHtml(utilisateur.nom)}</td>
                 <td>${escapeHtml(utilisateur.prenom)}</td>
                 <td>${escapeHtml(utilisateur.motDePasse)}</td>
+                <td>
+                    <a class="btn-link" href="/edit.html?id=${utilisateur.utilisateur_id}">Modifier</a>
+                    <button class="danger" onclick="supprimerUtilisateur(${utilisateur.utilisateur_id})">Supprimer</button>
+                </td>
             `;
             tbody.appendChild(tr);
         });

@@ -15,13 +15,13 @@ exports.getUtilisateur = (req,res)=>{
 exports.addUtilisateur = (req,res)=>{
     const nom = req.body.nom;
     const prenom = req.body.prenom;
-    const utilisateur_id = req.body.utilisateur_id;
-    console.log("Insertion:",nom,prenom,utilisateur_id);
-    if (!nom || !prenom || !utilisateur_id) {
+    const motDePasse = req.body.motDePasse;
+    console.log("Insertion:",nom,prenom,motDePasse);
+    if (!nom || !prenom || !motDePasse) {
         return res.status(400).json({ message: "Une ou des valeurs sont manquantes" });
     }
-    db.run("INSERT INTO utilisateurs(nom, prenom,utilisateur_id) VALUES (?,?,?)",
-        [nom,prenom,utilisateur_id],
+    db.run("INSERT INTO utilisateurs(nom, prenom, motDePasse) VALUES (?,?,?)",
+        [nom,prenom,motDePasse],
         function(err){if(err){console.log(err);return res.status(500).json({erreur:err.message});}
         res.json({message:"Utilisateur ajouté",id:this.lastID});
     });};
@@ -29,8 +29,8 @@ exports.addUtilisateur = (req,res)=>{
 //Requête PUT
 exports.updateUtilisateur = (req, res) => {
     const id = req.params.utilisateur_id;
-    const { nom, prenom, utilisateur_id } = req.body;
-    db.run('UPDATE utilisateurs SET nom = ?, prenom = ?, utilisateur_id = ? WHERE utilisateur_id = ?', [nom, prenom, utilisateur_id, id],
+    const { nom, prenom, motDePasse } = req.body;
+    db.run('UPDATE utilisateurs SET nom = ?, prenom = ?, motDePasse = ? WHERE id = ?', [nom, prenom, motDePasse, id],
         function(err) {
             if (err) {
                 return res.status(500).json({ erreur: err.message });
@@ -45,7 +45,7 @@ exports.deleteUtilisateur = (req, res) => {
     if (!id) {
         return res.status(400).json({ message: "ID manquant" });
     }
-    db.run('DELETE FROM utilisateurs WHERE utilisateur_id = ?', [id], function(err) {
+    db.run('DELETE FROM utilisateurs WHERE id = ?', [id], function(err) {
         if (err) {
             console.error(err);
             return res.status(500).json({ erreur: err.message });

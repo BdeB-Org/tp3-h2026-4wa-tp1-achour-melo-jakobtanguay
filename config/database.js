@@ -11,21 +11,14 @@ const db = new sqlite3.Database('./fichier.db', (err) => {
 });
 
 db.serialize(() => {
-    /*db.run(`
-        CREATE TABLE IF NOT EXISTS Utilisateurs (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nom TEXT,
-            programme TEXT
-        )
-    `);*/
 
         db.run(`
         CREATE TABLE IF NOT EXISTS Critiques (
             critique_id INTEGER PRIMARY KEY AUTOINCREMENT,
-            utilisateur_id TEXT,
+            utilisateur_id INTEGER,
             message TEXT,
             note TEXT,
-            jeu_id TEXT
+            jeu_id INTEGER
         )
     `);
 
@@ -46,15 +39,16 @@ db.serialize(() => {
 
     db.run(`
         CREATE TABLE IF NOT EXISTS Utilisateurs (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            utilisateur_id INTEGER PRIMARY KEY AUTOINCREMENT,
             nom TEXT UNIQUE,
+            prenom TEXT,
             motDePasse TEXT
         )
     `);
 
     db.run(
-        "INSERT OR IGNORE INTO Utilisateurs (nom, motDePasse) VALUES (?, ?)",
-        ['admin', 'admin123']
+        "INSERT OR IGNORE INTO Utilisateurs (nom, prenom, motDePasse) VALUES (?, ?, ?)",
+        ['admin', '', 'admin123']
     );
 });
 
