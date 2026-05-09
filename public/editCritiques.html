@@ -1,0 +1,38 @@
+<!-- Fait par Isabelle JT -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier une critique</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="conteneurEditCritiques" style="max-width: 700px;">
+        <div class="topbar">
+            <div>
+                <h1>Modifier une critique</h1>
+            </div>
+            <div class="actions">
+                <a class="btn-link" href="/listeCritiques.html">Retour à la liste</a>
+                <button class="secondary" onclick="logout()">Déconnexion</button>
+            </div>
+        </div>
+
+        <div id="status"></div>
+
+        <form id="formEdit">
+            <input type="text" id="message" placeholder="Message de la critique" required>
+            <input type="number" id="note" placeholder="Note (1-100)" min="1" max="100" required>
+            <input type="text" id="jeu_id" placeholder="ID du jeu" required>
+            <input type="text" id="utilisateur_id" placeholder="ID de l'utilisateur" required>
+            <input type="hidden" id="critique_id">
+            <input type="hidden" id="date">
+
+            <button type="submit">Enregistrer les modifications</button>
+        </form>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/editCritiques.js"></script>
+</body>
+</html>
