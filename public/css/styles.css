@@ -101,3 +101,16 @@
     border-radius: 10px;
     border: none;
 }
+
+/*Page jeux.html (Léane)*/
+.pageJeux{
+    background-color: #90badd;
+}
+.containerJeux{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.formAjout{
+    padding: 1em;
+}
