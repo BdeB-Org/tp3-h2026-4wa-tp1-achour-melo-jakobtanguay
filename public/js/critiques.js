@@ -28,7 +28,9 @@ async function chargerCritiques() {
         data.forEach(critique => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${escapeHtml(critique.critique_id || critique_id || '')}</td>
+
+                <td>${critique.critique_id}</td>
+                <td>${escapeHtml(critique.date || '')}</td>
                 <td>${escapeHtml(critique.utilisateur_id || '')}</td>
                 <td>${escapeHtml(critique.jeu_id || '')}</td>
                 <td>${escapeHtml(critique.message || '')}</td>
@@ -50,11 +52,13 @@ form.addEventListener('submit', async (e) => {
     const message = document.getElementById('message').value.trim();
     const note = document.getElementById('note').value.trim();
     const jeuId = document.getElementById('jeu_id').value.trim();
+    const UtilisateurID = document.getElementById('utilisateur_id').value.trim();
+    const date = new Date().toISOString();
 
     try {
         const res = await apiFetch('/api/critiques', {
             method: 'POST',
-            body: JSON.stringify({ message, note, jeu_id: jeuId })
+            body: JSON.stringify({ message, note, jeu_id: jeuId, utilisateur_id: UtilisateurID, date: date })
         });
 
         const data = await res.json();

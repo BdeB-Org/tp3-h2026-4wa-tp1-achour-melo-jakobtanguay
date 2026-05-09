@@ -7,6 +7,8 @@ const critiquesController = require("../controllers/critiquesController.js");
 // Set up du CRUD
 router.get("/critiques", critiquesController.getCritique);
 
+router.get("/critiques/:critique_id", critiquesController.getCritiqueById);
+
 router.post("/critiques", critiquesController.addCritique);
 
 router.put("/critiques/:critique_id", critiquesController.updateCritique);

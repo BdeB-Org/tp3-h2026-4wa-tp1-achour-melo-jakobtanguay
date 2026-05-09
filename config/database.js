@@ -14,6 +14,7 @@ db.serialize(() => {
         db.run(`
         CREATE TABLE IF NOT EXISTS Critiques (
             critique_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            date TEXT,
             utilisateur_id INTEGER,
             message TEXT,
             note TEXT,
