@@ -10,7 +10,6 @@ exports.getJeux_video = (req,res)=>{
 
 //requête POST
 exports.addJeux_video = (req,res)=>{
-//const jeu_id = req.body.jeu_id;
 const titre = req.body.titre;
 console.log("Insertion:",/*jeu_id*/ titre);
 db.run("INSERT INTO Jeux_videos(titre) VALUES (?)",[/*jeu_id,*/titre],
