@@ -29,8 +29,9 @@ async function chargerUtilisateurs() {
             tr.innerHTML = `
                 <td>${utilisateur.id}</td>
                 <td>${escapeHtml(utilisateur.nom)}</td>
+                <td>${escapeHtml(utilisateur.prenom)}</td>
                 <td>
-                    <a class="btn-link" href="/edit.html?id=${utilisateur.id}">Modifier</a>
+                    <a class="btn-link" href="/editUtilisateurs.html?id=${utilisateur.id}">Modifier</a>
                     <button class="danger" onclick="supprimerUtilisateur(${utilisateur.id})">Supprimer</button>
                 </td>
             `;
