@@ -29,13 +29,13 @@ db.serialize(() => {
         )
     `);
 
-      db.run(`
-        CREATE TABLE IF NOT EXISTS Publications (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nom TEXT,
-            programme TEXT
-        )
-    `);
+    //   db.run(`
+    //     CREATE TABLE IF NOT EXISTS Publications (
+    //         id INTEGER PRIMARY KEY AUTOINCREMENT,
+    //         nom TEXT,
+    //         programme TEXT
+    //     )
+    // `);
 
     db.run(`
         CREATE TABLE IF NOT EXISTS Utilisateurs (
