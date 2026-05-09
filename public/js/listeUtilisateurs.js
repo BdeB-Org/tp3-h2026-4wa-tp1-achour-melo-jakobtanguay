@@ -1,7 +1,7 @@
-/*Fait par Léane*/
+/*Fait par Axel*/
 requireAuth();
 
-const tbody = document.getElementById('tbodyListeUtilisateurs');
+const tbody = document.getElementById('tbodyListe');
 const message = document.getElementById('message');
 
 function showMessage(text, isError = false) {
@@ -27,12 +27,13 @@ async function chargerUtilisateurs() {
         data.forEach(utilisateur => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${utilisateur.id}</td>
+                <td>${utilisateur.utilisateur_id}</td>
                 <td>${escapeHtml(utilisateur.nom)}</td>
                 <td>${escapeHtml(utilisateur.prenom)}</td>
+                <td>${escapeHtml(utilisateur.motDePasse)}</td>
                 <td>
-                    <a class="btn-link" href="/editUtilisateurs.html?id=${utilisateur.id}">Modifier</a>
-                    <button class="danger" onclick="supprimerUtilisateur(${utilisateur.id})">Supprimer</button>
+                    <a class="btn-link" href="/editUtilisateurs.html?id=${utilisateur.utilisateur_id}">Modifier</a>
+                    <button class="danger" onclick="supprimerUtilisateur(${utilisateur.utilisateur_id})">Supprimer</button>
                 </td>
             `;
             tbody.appendChild(tr);

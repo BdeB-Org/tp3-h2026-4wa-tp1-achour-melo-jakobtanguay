@@ -1,4 +1,4 @@
-//Fait par Léane
+//Fait par Axel
 requireAuth();
 
 const form = document.getElementById('formAjout');

@@ -1,3 +1,4 @@
+// Fait par Axel
 requireAuth();
 
 const form = document.getElementById('formEdit');
