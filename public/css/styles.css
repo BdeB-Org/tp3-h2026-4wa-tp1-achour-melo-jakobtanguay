@@ -1,3 +1,8 @@
+/*Style général du site*/
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 
 /* Style de la page critiques.html (Fait par Isabelle J-T) */
 
@@ -77,6 +82,7 @@
 /*Page de connexion (Léane)*/
 .fondEcran{
     background-color: #90badd;
+    font-family: Arial, Helvetica, sans-serif;
 }
 #formulaireConnexion{
     display: flex;
@@ -102,9 +108,16 @@
     border: none;
 }
 
+/*Page d'accueil*/
+.pageAccueil{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
 /*Page jeux.html (Léane)*/
 .pageJeux{
     background-color: #90badd;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .containerJeux{
     display: flex;
@@ -113,4 +126,16 @@
 }
 .formAjout{
     padding: 1em;
+}
+
+/*Page editJeux.html (Léane)*/
+.pageEditJeux{
+    background-color: #90badd;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*Page listeJeux.html (Léane)*/
+.pageListeJeux{
+    background-color: #90badd;
+    font-family: Arial, Helvetica, sans-serif;
 }
