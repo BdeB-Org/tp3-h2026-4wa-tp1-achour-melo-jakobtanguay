@@ -1,3 +1,4 @@
+//Fait par Léane
 const db = require('../config/database');
 
 //requête GET
