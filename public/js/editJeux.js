@@ -9,18 +9,16 @@ function showMessage(text, isError = false) {
     message.innerHTML = `<div class="message ${isError ? 'error' : ''}">${text}</div>`;
 }
 
-async function chargerUtilisateur() {
+async function chargerjeux() {
     try {
-        const res = await apiFetch('/api/utilisatuers/' + id);
+        const res = await apiFetch('/api/jeuxvideo/' + id);
         const data = await res.json();
 
         if (!res.ok) {
             throw new Error(data.message || 'Erreur lors du chargement');
         }
 
-        document.getElementById('nom').value = data.nom;
-        document.getElementById('programme').value = data.prenom;
-        document.getElementById('programme').value = data.motDePasse;
+        document.getElementById('titre').value = data.titre;
     } catch (err) {
         showMessage(err.message, true);
     }
@@ -29,13 +27,12 @@ async function chargerUtilisateur() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const nom = document.getElementById('nom').value.trim();
-    const programme = document.getElementById('programme').value.trim();
+    const titre = document.getElementById('titre').value.trim();
 
     try {
-        const res = await apiFetch('/api/utilisateurs/' + id, {
+        const res = await apiFetch('/api/jeuxvideo/' + id, {
             method: 'PUT',
-            body: JSON.stringify({ nom, programme })
+            body: JSON.stringify({ titre })
         });
 
         const data = await res.json();
@@ -46,7 +43,7 @@ form.addEventListener('submit', async (e) => {
 
         showMessage(data.message);
         setTimeout(() => {
-            window.location.href = '/liste.html';
+            window.location.href = '/listeJeux.html';
         }, 800);
     } catch (err) {
         showMessage(err.message, true);
@@ -54,7 +51,7 @@ form.addEventListener('submit', async (e) => {
 });
 
 if (!id) {
-    showMessage('ID utilisateur manquant', true);
+    showMessage('ID jeu manquant', true);
 } else {
-    chargerUtilisateur();
+    chargerjeux();
 }
