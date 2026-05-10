@@ -1,9 +1,11 @@
 /*Fait par Léane*/
 requireAuth();
 
+/*Conteneur où les données de la table sont affichées*/
 const tbody = document.getElementById('tbodyListe');
 const message = document.getElementById('message');
 
+/*Message d'erreur*/
 function showMessage(text, isError = false) {
     message.innerHTML = `<div class="message ${isError ? 'error' : ''}">${text}</div>`;
 }
@@ -17,13 +19,14 @@ function escapeHtml(value) {
         .replaceAll("'", '&#039;');
 }
 
+/*Fonction pour afficher le tableau de la table sur les jeux vidéo*/
 async function chargerJeux() {
     try {
         const res = await apiFetch('/api/jeuxvideo');
         const data = await res.json();
 
         tbody.innerHTML = '';
-
+        /*Affichage de l'id et du titre du jeu*/
         data.forEach(jeux => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
@@ -41,9 +44,11 @@ async function chargerJeux() {
     }
 }
 
+/*Fonctione pour supprimer un jeu vidéo de la base de données*/
 async function supprimerJeu(id) {
     if (!confirm('Voulez-vous vraiment supprimer ce jeu ?')) return;
 
+    /*Suppression d'un jeu avec la méthode DELETE*/
     try {
         const res = await apiFetch('/api/jeuxvideo/' + id, { method: 'DELETE' });
         const data = await res.json();

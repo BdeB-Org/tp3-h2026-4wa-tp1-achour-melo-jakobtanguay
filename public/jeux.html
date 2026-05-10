@@ -8,16 +8,14 @@
 </head>
 <body class="pageJeux">
     <div class="containerJeux">
-         <h1 >Gestion des jeux vidéo</h1>
-         <a href="/public/accueil.html">Revenir à la page d'accueil</a>
-          <p>Ajout et affichage dans un tableau</p>
-        <div class="topbar">
+        <h1 >Gestion des jeux vidéo</h1>
+        <p>Ajout et affichage dans un tableau</p>
+        <div>
             <div>
-                <div class="actions">
+                <div class="actionsJeux">
                     <div>
                         <a class="btn-link" href="/listeJeux.html">Voir la liste complète</a>
                     </div>
-                    <br>
                     <br>
                     <div>
                         <button class="secondary" onclick="logout()">Déconnexion</button>
@@ -30,12 +28,12 @@
 
         <h2>Ajouter un jeu vidéo</h2>
         <form id="formAjout">
-            <input type="text" id="titre" placeholder="Nom du jeu" required>
+            <input type="text" id="titre" placeholder="Titre du jeu" required>
             <button type="submit">Ajouter</button>
         </form>
 
         <h2>Tableau des jeux vidéo</h2>
-        <table class="EnsembleCritiques">
+        <table class="tableauJeux">
             <thead>
                 <tr>
                     <th>ID du jeu</th>

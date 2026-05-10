@@ -13,14 +13,12 @@
     <button type="submit" id="boutonCritiques">Critiques</button>
     <button type="submit" id="boutonUtilisateurs">Utilisateurs</button>
     <button type="submit" id="boutonJeux">Jeux vidéo</button>
-    <button type="submit" id="boutonPublications">Publications</button>
 
     <script src="js/auth.js"></script>
     <script>
         const boutonCritique = document.getElementById('boutonCritiques');
         const boutonUtilisateurs = document.getElementById('boutonUtilisateurs');
         const boutonJeux = document.getElementById('boutonJeux');
-        const boutonPublications = document.getElementById('boutonPublications');
 
         boutonCritique.addEventListener('click', () => {
             window.location.href = '/critiques.html';
@@ -32,10 +30,6 @@
 
         boutonJeux.addEventListener('click', () => {
             window.location.href = '/jeux.html';
-        });
-
-        boutonPublications.addEventListener('click', () => {
-            window.location.href = '/publications.html';
         });
     </script>
 </body>

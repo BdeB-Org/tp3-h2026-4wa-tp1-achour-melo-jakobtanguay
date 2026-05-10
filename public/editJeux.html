@@ -1,6 +1,6 @@
 <!-- Fait par Léane -->
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="pageEntiereEditJeux">
 <head>
     <meta charset="UTF-8">
     <title>Modifier un jeu vidéo</title>
@@ -8,11 +8,11 @@
 </head>
 <body class="pageEditJeux">
     <div class="conteneurEditJeux" style="max-width: 700px;">
-        <div class="topbar">
+        <div class="enteteEditJeux">
             <div>
                 <h1>Modifier un jeu vidéo</h1>
             </div>
-            <div class="actions">
+            <div class="actionsEditJeux">
                 <a class="btn-link" href="/listeJeux.html">Retour à la liste</a>
                 <button class="secondary" onclick="logout()">Déconnexion</button>
             </div>
@@ -21,8 +21,8 @@
         <div id="message"></div>
 
         <form id="formEdit">
-            <input type="text" id="titre" placeholder="Nom du jeu" required>
-            <button type="submit">Enregistrer les modifications</button>
+            <input type="text" id="titre" placeholder="Titre du jeu" required>
+            <button type="submit">Enregistrer la modification</button>
         </form>
     </div>
 

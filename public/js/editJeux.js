@@ -1,11 +1,13 @@
 //Fait par Léane
 requireAuth();
 
+/*Référence au formulaire pour modifier un jeu vidéo dans le html*/
 const form = document.getElementById('formEdit');
 const message = document.getElementById('message');
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 
+/*Afficher un message d'erreur*/
 function showMessage(text, isError = false) {
     message.innerHTML = `<div class="message ${isError ? 'error' : ''}">${text}</div>`;
 }
@@ -25,11 +27,13 @@ async function chargerjeux() {
     }
 }
 
+/*Référence au bouton pour enregistrer la modification*/
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
+    /*Référence à l'encadré où il faut écrire le nouveau titre du jeu dans le html*/
     const titre = document.getElementById('titre').value.trim();
 
+    /*Modification d'un jeu avec la méthode PUT*/
     try {
         const res = await apiFetch('/api/jeuxvideo/' + id, {
             method: 'PUT',
@@ -43,6 +47,7 @@ form.addEventListener('submit', async (e) => {
         }
 
         showMessage(data.message);
+        /*Retour à la page listeJeux.html après avoir modifié un jeu vidéo*/
         setTimeout(() => {
             window.location.href = '/listeJeux.html';
         }, 800);

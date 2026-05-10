@@ -88,10 +88,16 @@ body{
 #formulaireConnexion{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 1rem;
 }
 .conteneur{
     margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 #boutonConnecter{
     padding: 0.5rem;
@@ -109,9 +115,14 @@ body{
     border: none;
 }
 
-/*Page d'accueil*/
+/*Page d'accueil (Léane)*/ 
 .pageAccueil{
     font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
 }
 
 
@@ -128,17 +139,93 @@ body{
 .formAjout{
     padding: 1em;
 }
+.tableauJeux{
+    width: 80%;
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 1rem;
+    border: black solid 1px;
+}
+.actionsJeux{
+    margin-top: 1rem;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
 
 /*Page editJeux.html (Léane)*/
 .pageEditJeux{
     background-color: #90badd;
     font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
 }
+.actionsEditJeux{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.enteteEditJeux{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#formEdit{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+.conteneurEditJeux{
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 /*Page listeJeux.html (Léane)*/
 .pageListeJeux{
     background-color: #90badd;
     font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.enteteListeJeux{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.sectionListeJeux{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+.listeJeux{
+    width: 250%;
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 1rem;
+    border: black solid 1px;
+}
+.actions{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* css par Axel */

@@ -18,6 +18,7 @@ function escapeHtml(value) {
         .replaceAll("'", '&#039;');
 }
 
+/*Fonction pour afficher le tableau des jeux vidéo*/
 async function chargerJeux() {
     try {
         const res = await apiFetch('/api/jeuxvideo');
@@ -27,9 +28,11 @@ async function chargerJeux() {
 
         data.forEach(jeu => {
             const tr = document.createElement('tr');
+            /*Référence à la colonne de l'id du jeu dans le tableau*/
+            /*Référence à la colonne du titre du jeu dans le tableau*/
             tr.innerHTML = `
                 <td>${jeu.jeu_id}</td>
-                <td>${escapeHtml(jeu.titre)}</td>
+                <td>${escapeHtml(jeu.titre)}</td>  
                 <td>
                     <a class="btn-link" href="/editJeux.html?id=${jeu.jeu_id}">Modifier</a>
                     <button class="danger" onclick="supprimerJeu(${jeu.jeu_id})">Supprimer</button>
@@ -46,15 +49,14 @@ async function chargerJeux() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    console.log("Envoyé");
-
+    // Référence à la case pour le nom du jeu dans le html
     const titre = document.getElementById('titre').value.trim();
-    //const id = document.getElementById('jeu_id').value.trim();
 
+    /*Ajout d'un jeu dans le tableau avex la méthode POST*/
     try {
         const res = await apiFetch('/api/jeuxvideo', {
             method: 'POST',
-            body: JSON.stringify({ titre, /*jeu_id: id */})
+            body: JSON.stringify({ titre})
         });
 
         const data = await res.json();
@@ -71,9 +73,11 @@ form.addEventListener('submit', async (e) => {
     }
 });
 
+// Bouton pour supprimer un jeu
 async function supprimerJeu(id) {
     if (!confirm('Voulez-vous supprimer ce jeu ?')) return;
 
+    /*Suppression d'un jeu dans le tableau avec la méthode DELETE*/
     try {
         const res = await apiFetch('/api/jeuxvideo/' + id, {
             method: 'DELETE'
