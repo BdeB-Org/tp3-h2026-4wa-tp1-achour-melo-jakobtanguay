@@ -12,7 +12,7 @@ function showMessage(text, isError = false) {
 
 async function chargerUtilisateur() {
     try {
-        const res = await apiFetch('/api/utilisatuers/' + id);
+        const res = await apiFetch('/api/utilisateurs/' + id);
         const data = await res.json();
 
         if (!res.ok) {

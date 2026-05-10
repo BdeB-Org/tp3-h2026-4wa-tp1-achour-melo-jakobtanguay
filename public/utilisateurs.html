@@ -6,10 +6,11 @@
     <title>Gestion des utilisateurs</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="bodyUtilisateur">
     <div class="container">
          <h1 >Gestion des utilisateurs</h1>
           <p>Ajout et affichage dans un tableau</p>
+          <a href="accueil.html">Retour à l'accueil</a>
         <div class="topbar">
             <div>
                 <div class="actions">
@@ -28,8 +29,7 @@
        <div id="message"></div>
 
         <h2>Ajouter un utilisateur</h2>
-        <form id="formAjout">
-            <!-- <input type="text" id="utilisateur_id" placeholder="ID de l'utilisateur" required> -->
+        <form id="formAjout" class="formAjoutUtilisateur">
             <input type="text" id="nom" placeholder="Nom de l'utilisateur" required>
             <input type="text" id="prenom" placeholder="Prénom de l'utilisateur" required>
             <input type="password" id="motDePasse" placeholder="Mot de passe" required>
@@ -37,7 +37,7 @@
         </form>
 
         <h2>Tableau des utilisateurs</h2>
-        <table class="EnsembleCritiques">
+        <table class="tableauUtilisateurs">
             <thead>
                 <tr>
                     <th>ID de l'utilisateur</th>

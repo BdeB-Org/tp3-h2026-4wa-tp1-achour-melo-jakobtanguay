@@ -1,6 +1,7 @@
 /*Style général du site*/
 body{
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #90badd;
 }
 
 
@@ -138,4 +139,109 @@ body{
 .pageListeJeux{
     background-color: #90badd;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+/* css par Axel */
+
+.bodyUtilisateur{
+    background-color: #90badd;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.bodyUtilisateur .topbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 20px;
+    background-color: #fff;
+}
+
+.tableauUtilisateurs{
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: black solid 1px;
+}
+
+.formAjoutUtilisateur{
+    padding: 1em;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formAjoutUtilisateur input{
+    padding: 0.5em;
+    border-radius: 10px;
+    border: none;
+}
+
+.tableauListeUtilisateurs{
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: black solid 1px;
+    margin: 20px;
+}
+
+.bodyListeUtilisateurs{
+    background-color: #90badd;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.listeUtilisateurs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.listeUtilisateurs .topbar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 20px;
+    background-color: #fff;
+}
+
+.bodyEditUtilisateur{
+    background-color: #90badd;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.bodyEditUtilisateur .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.bodyEditUtilisateur .topbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 20px;
+    background-color: #fff;
+}
+
+.formEditUtilisateurs{
+    padding: 1em;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formEditUtilisateurs input{
+    padding: 0.5em;
+    border-radius: 10px;
+    border: none;
 }
