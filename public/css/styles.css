@@ -5,43 +5,38 @@ body{
 }
 
 
-/* Style de la page critiques.html (Fait par Isabelle J-T) */
+/* Style des pages critiques.html (Fait par Isabelle J-T) */
 
 /* Style de base de la page*/
 .container {
     display: flex;
-    flex-direction:column;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    font-family: Arial, sans-serif;
-    
-    margin: 0;
-    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
 }
 
 /*Style de la section Gestion des critiques*/
 .topbar {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content:center;
     align-items: center;
     width: 100%;
     max-width: 1200px;
-    padding: 0px;
+    padding-bottom: 10px;
 
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /*Style de la section des actions (bouton de déconnexion et lien vers la liste complète)*/
 .actions {
+    margin-top: 1rem;
+    border: none;
     display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-    padding: 10px;
-    gap:40px;
-    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 /*Style du formulaire d'ajout de critique*/
@@ -55,29 +50,108 @@ body{
 }
 
 .EnsembleCritiques {
-    width: 100%;
-
+    width: 80%;
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    padding: 1rem;
     border: black solid 1px;
-    margin-top: 20px;
 }
-
-
-/*Style de la page listeCritiques.html (Fait par Isabelle J-T)*/
-
 
 /*Style de la section de la table*/
 .EnsembleListeCritiques {
-    width: 100%;
+    width: 80%;
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 1rem;
+    border: black solid 1px;
+}
 
+
+/* Conteneur principal pour les pages critiques (critiques.html, editCritiques.html, listeCritiques.html) */
+.pageCritiques, .pageEditCritiques, .pageListeCritiques {
+    background-color: #90badd; 
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+}
+
+/* Conteneur central limitant la largeur et alignant le contenu */
+.containerCritiques {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 0;
+}
+
+/* Bloc réutilisable pour formulaires et tableaux de critiques */
+.critiqueCard {
+    width: 100%;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border: black solid 1px;
-    margin-top: 20px;
+    border: 1px solid #000;
+    padding: 1rem;
+    margin-top: 0.5rem;
 }
+
+.liste {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+}
+/* Formulaire d'ajout */
+#formAjout, #formEditCritique {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+#formAjout input, #formAjout textarea, #formEditCritique input, #formEditCritique textarea {
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Boutons d'action */
+.btn {
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+.btnPrimary { background-color: #2b6cb0; color: #fff; }
+.btnDanger { background-color: #c53030; color: #fff; }
+
+/* Tableaux de liste — lisibilité améliorée */
+.listeCritiquesTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+.listeCritiquesTable th, .listeCritiquesTable td {
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+.listeCritiquesTable thead th {
+    background-color: #f3f4f6;
+}
+
+
+/* Fin des styles critiques */
 
 
 /*Page de connexion (Léane)*/
